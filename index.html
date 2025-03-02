@@ -3,11 +3,47 @@
     <head>
         <title>HTML5 Tetris</title>
         <link rel='stylesheet' href='style.css' />
+        <style>
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 40px; /* More spacing between elements */
+                padding-top: 20px;
+            }
+            .leopard-image {
+                width: 200px;
+                height: auto;
+                border-radius: 15px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            }
+            .game-content {
+                text-align: center;
+            }
+            h1 {
+                text-align: center;
+                font-size: 26px;
+                font-weight: bold;
+                color: #ffdd57;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+        </style>
     </head>
     <body>
-        <audio id="clearsound" src="sound/pop.ogg" preload="auto"></audio>
-        <canvas width='300' height='600'></canvas>
-        <button id="playbutton" onclick="playButtonClicked();">Play</button>
+        <h1>Thank you Lakeside Leopards!</h1>
+        
+        <div class="container">
+            <img src="lakeside-leopard.jpg" alt="Lakeside Leopard" class="leopard-image">
+
+            <div class="game-content">
+                <audio id="clearsound" src="sound/pop.ogg" preload="auto"></audio>
+                <canvas width='300' height='600'></canvas>
+                <button id="playbutton" onclick="playButtonClicked();">Play</button>
+            </div>
+
+            <img src="lakeside-leopard.jpg" alt="Lakeside Leopard" class="leopard-image">
+        </div>
+
         <script src='js/tetris.js'></script>
         <script src='js/controller.js'></script>
         <script src='js/render.js'></script>
