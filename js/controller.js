@@ -11,3 +11,9 @@ document.body.onkeydown = function( e ) {
         render();
     }
 };
+
+/* Allow on-screen buttons to work */
+function simulateKeyPress(action) {
+    keyPress(action);
+    render();
+}
