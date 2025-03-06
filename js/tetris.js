@@ -25,6 +25,9 @@ var colors = [
     'cyan', 'orange', 'blue', 'yellow', 'red', 'green', 'purple'
 ];
 
+const backgroundImage = new Image();
+backgroundImage.src = "../img/cloud-transparent.png"; // Make sure the path is correct
+
 // creates a new 4x4 shape in global variable 'current'
 // 4x4 so as to cover the size when the shape is rotated
 function newShape() {
@@ -205,6 +208,38 @@ function newGame() {
 function clearAllIntervals(){
     clearInterval( interval );
     clearInterval( intervalRender );
+}
+
+function render() {
+    // Clear the canvas before drawing
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw the background image
+    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+
+    // Draw the game board (existing pieces)
+    for (var y = 0; y < ROWS; ++y) {
+        for (var x = 0; x < COLS; ++x) {
+            if (board[y][x]) {
+                ctx.fillStyle = colors[board[y][x] - 1]; // Adjust index
+                ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                ctx.strokeStyle = "#222"; // Tile border for visibility
+                ctx.strokeRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+            }
+        }
+    }
+
+    // Draw the current falling piece
+    for (var y = 0; y < 4; ++y) {
+        for (var x = 0; x < 4; ++x) {
+            if (current[y][x]) {
+                ctx.fillStyle = colors[current[y][x] - 1];
+                ctx.fillRect((currentX + x) * BLOCK_SIZE, (currentY + y) * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+                ctx.strokeStyle = "#222";
+                ctx.strokeRect((currentX + x) * BLOCK_SIZE, (currentY + y) * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+            }
+        }
+    }
 }
 
 // Set default zoom to 90%
