@@ -207,12 +207,12 @@ function clearAllIntervals(){
     clearInterval( intervalRender );
 }
 
-// Set default zoom to 70%
+// Set default zoom to 90%
 document.addEventListener("DOMContentLoaded", function () {
-    document.body.style.zoom = "70%";  // Works in most browsers
+    document.body.style.zoom = "90%";  // Works in most browsers
 
     // Alternative for browsers that don't support zoom
-    document.body.style.transform = "scale(0.7)";
+    document.body.style.transform = "scale(0.9)";
     document.body.style.transformOrigin = "top left";
 });
 
