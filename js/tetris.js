@@ -206,3 +206,19 @@ function clearAllIntervals(){
     clearInterval( interval );
     clearInterval( intervalRender );
 }
+
+// Set default zoom to 70%
+document.addEventListener("DOMContentLoaded", function () {
+    document.body.style.zoom = "70%";  // Works in most browsers
+
+    // Alternative for browsers that don't support zoom
+    document.body.style.transform = "scale(0.7)";
+    document.body.style.transformOrigin = "top left";
+});
+
+// Prevent arrow keys from scrolling the page
+window.addEventListener("keydown", function (e) {
+    if (["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+        e.preventDefault();  // Stop the browser from scrolling
+    }
+});
