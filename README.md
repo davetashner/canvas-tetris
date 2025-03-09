@@ -36,8 +36,8 @@ Prerequisites
 	•	A valid public domain (e.g., mydomain.com).
 
 Potential Improvements:
-	1.	Reduce Redundant Code
 
+	1.	Reduce Redundant Code
 	•	Functions such as wait_for_instance_profile() and create_iam_role() include multiple nested checks for IAM entities. Some parts can be refactored into reusable utilities.
 	
     2.	Enhanced Logging
