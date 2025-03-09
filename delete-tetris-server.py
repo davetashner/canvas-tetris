@@ -5,14 +5,17 @@ import time
 # AWS Configuration
 REGION = "us-east-1"
 SECURITY_GROUP_NAME = "tetris-sg"
-HOSTED_ZONE_ID = "ZYTTV7P0U19Z3V"  # Route 53 hosted zone
+HOSTED_ZONE_ID = "Z2ONH2Z46JHXWL"  # Route 53 hosted zone
+
+# Domain Configuration
+DOMAIN_NAME = "davetashner.com"
 
 # Parse Command-Line Arguments
 parser = argparse.ArgumentParser(description="Delete Tetris server resources from AWS.")
 parser.add_argument("--dns", type=str, default="tetris",
                     help="Subdomain of the Tetris server to delete (default: tetris.yourdomain.com)")
 args = parser.parse_args()
-DNS_NAME = f"{args.dns}.yourdomain.com"
+DNS_NAME = f"{args.dns}.{DOMAIN_NAME}"
 
 # Initialize AWS Clients
 ec2 = boto3.client("ec2", region_name=REGION)

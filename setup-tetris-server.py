@@ -15,7 +15,6 @@ INSTANCE_TYPE = "m5.large"
 KEY_NAME = "minecraft-key"
 REGION = "us-east-1"
 SECURITY_GROUP_NAME = "tetris-sg"
-TETRIS_PORT = 80
 
 # Domain/DNS Configuration
 DOMAIN_NAME = "yourdomain.com"
