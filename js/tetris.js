@@ -25,9 +25,6 @@ var colors = [
     'cyan', 'orange', 'blue', 'yellow', 'red', 'green', 'purple'
 ];
 
-const backgroundImage = new Image();
-backgroundImage.src = "../img/cloud-transparent.png"; // Make sure the path is correct
-
 // creates a new 4x4 shape in global variable 'current'
 // 4x4 so as to cover the size when the shape is rotated
 function newShape() {
@@ -213,9 +210,6 @@ function clearAllIntervals(){
 function render() {
     // Clear the canvas before drawing
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Draw the background image
-    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 
     // Draw the game board (existing pieces)
     for (var y = 0; y < ROWS; ++y) {
