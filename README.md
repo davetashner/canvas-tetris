@@ -10,30 +10,40 @@ https://dionyziz.com/graphics/canvas-tetris/
 
 Tetris Cloud Server Deployment
 
-This script automates the deployment of a Tetris web game on an AWS EC2 instance with a custom DNS name and SSL certificate.
+The setup-tetris-server.py script automates the deployment of a Tetris web game on an AWS EC2 instance with a custom DNS name and SSL certificate.
 
-Features
+*Features*
 
 ✅ Deploys a Tetris game to an AWS EC2 instance.
+
 ✅ Uses a custom subdomain (e.g., tetris.mydomain.com).
+
 ✅ Configures HTTPS with Let’s Encrypt SSL.
+
 ✅ Creates necessary AWS resources:
+
 	•	Security group
 	•	IAM role with S3 read permissions
 	•	Route 53 DNS record
+
 ✅ Waits for DNS propagation and SSL activation.
 
 Prerequisites
 	•	AWS CLI configured with the required credentials.
+
 	•	A Route 53 hosted zone for managing the DNS records.
+
 	•	A valid public domain (e.g., mydomain.com).
 
 Potential Improvements:
 	1.	Reduce Redundant Code
+
 	•	Functions such as wait_for_instance_profile() and create_iam_role() include multiple nested checks for IAM entities. Some parts can be refactored into reusable utilities.
-	2.	Enhanced Logging
+	
+    2.	Enhanced Logging
 	•	More structured output (e.g., success messages, status updates) can improve debugging and user experience.
-	3.	Configurable Parameters
+	
+    3.	Configurable Parameters
 	•	Some hardcoded values like REGION, INSTANCE_TYPE, and HOSTED_ZONE_ID could be configurable via a .env file or command-line options.
 
 
