@@ -7,17 +7,13 @@ import sys
 import time
 
 # AWS Configuration
-HOSTED_ZONE_ID = "ZYTTV7P0U19Z3V"
-IAM_POLICY_NAME = "TetrisS3ReadOnlyPolicy"
-IAM_ROLE_NAME = "TetrisServerRole"
-INSTANCE_PROFILE_NAME = "TetrisInstanceProfile"
-INSTANCE_TYPE = "m5.large"
-KEY_NAME = "minecraft-key"
+HOSTED_ZONE_ID = "Z2ONH2Z46JHXWL"
+INSTANCE_TYPE = "t2.small"
 REGION = "us-east-1"
 SECURITY_GROUP_NAME = "tetris-sg"
 
 # Domain/DNS Configuration
-DOMAIN_NAME = "yourdomain.com"
+DOMAIN_NAME = "davetashner.com"
 
 # Parse Command-Line Arguments
 parser = argparse.ArgumentParser(description="Setup a Tetris server on AWS.")
@@ -27,7 +23,7 @@ parser.add_argument("--test-dns", action="store_true",
                     help="Run only the DNS health check")
 args = parser.parse_args()
 
-DNS_NAME = f"{args.dns}.{DOMAIN_NAME}]"
+DNS_NAME = f"{args.dns}.{DOMAIN_NAME}"
 
 # Initialize AWS Clients
 ec2 = boto3.client("ec2", region_name=REGION)
@@ -97,7 +93,6 @@ EOF
 
 # Enable the Tetris site
 cp /etc/nginx/sites-available/tetris /etc/nginx/sites-enabled/tetris
-mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 rm -f /etc/nginx/sites-enabled/default
 systemctl restart nginx
 
@@ -119,7 +114,6 @@ echo "Tetris is now available at https://{DNS_NAME}"
     instance = ec2.run_instances(
         ImageId=ami_id,
         InstanceType=INSTANCE_TYPE,
-        KeyName=KEY_NAME,
         MaxCount=1,
         MinCount=1,
         SecurityGroupIds=[security_group_id],
